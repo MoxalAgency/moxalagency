@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moxal Agency — Automatisations IA & Commerciales 24/7</title>
-<meta name="description" content="Moxal Agency construit des systèmes d'automatisation IA qui travaillent 24h/24, 7j/7 pour ne plus jamais rater un prospect.">
+<title>Moxal Agency — Automatisations Commerciales 24/7</title>
+<meta name="description" content="Moxal Agency construit des systemes d'automatisation commerciale sur mesure pour les entreprises BTP. Prospects, devis, relances, facturation — tout automatise.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -234,51 +234,164 @@ body {
   animation: float 6s ease-in-out infinite, fadeInUp 1s ease 0.2s both;
 }
 
-/* ===== ECG HEARTBEAT ANIMATION ===== */
-#ecg-line {
+/* ===== LOGO SHIMMER ===== */
+.logo-shimmer {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: logo-shine 3s ease-in-out infinite;
+  stroke: rgba(255,255,255,0.85);
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(100,180,255,0.8));
+}
+@keyframes logo-shine {
+  0%   { stroke-dashoffset: 800; opacity: 0; }
+  5%   { opacity: 1; }
+  50%  { stroke-dashoffset: 0; opacity: 1; }
+  70%  { stroke-dashoffset: 0; opacity: 0; }
+  100% { stroke-dashoffset: -800; opacity: 0; }
+}
+.logo-shimmer-nav {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: logo-shine-nav 3s ease-in-out infinite;
+  stroke: rgba(255,255,255,0.85);
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+}
+@keyframes logo-shine-nav {
+  0%   { stroke-dashoffset: 400; opacity: 0; }
+  5%   { opacity: 1; }
+  50%  { stroke-dashoffset: 0; opacity: 1; }
+  70%  { stroke-dashoffset: 0; opacity: 0; }
+  100% { stroke-dashoffset: -400; opacity: 0; }
+}
+
+/* ===== PACKS ===== */
+.packs { background: var(--bg-secondary); position: relative; }
+.packs-header { text-align: center; margin-bottom: 60px; }
+.packs-header .section-subtitle { margin: 0 auto; }
+.packs-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.pack-card {
+  padding: 40px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.pack-card.featured {
+  border-color: rgba(155, 48, 255, 0.4);
+  background: rgba(100, 40, 200, 0.08);
+}
+.pack-card.featured::before {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px;
-  height: 80px;
-  pointer-events: none;
-  z-index: 10;
-  overflow: visible;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient);
 }
-
-#ecg-path {
-  fill: none;
-  stroke: url(#ecgGrad);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 6px rgba(27,124,255,0.9)) drop-shadow(0 0 14px rgba(155,48,255,0.6));
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: ecg-draw 2.2s ease-in-out infinite;
+.pack-card:hover {
+  border-color: rgba(155, 48, 255, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
 }
-
-@keyframes ecg-draw {
-  0%   { stroke-dashoffset: 600; opacity: 0; }
-  5%   { opacity: 1; }
-  60%  { stroke-dashoffset: 0; opacity: 1; }
-  80%  { stroke-dashoffset: 0; opacity: 0.6; }
-  100% { stroke-dashoffset: -600; opacity: 0; }
+.pack-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  background: var(--gradient);
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #fff;
 }
-
-#ecg-dot {
-  fill: #fff;
-  filter: drop-shadow(0 0 8px #1B7CFF) drop-shadow(0 0 16px #9B30FF);
-  animation: ecg-dot-move 2.2s ease-in-out infinite;
+.pack-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
-
-@keyframes ecg-dot-move {
-  0%   { opacity: 0; }
-  5%   { opacity: 1; }
-  80%  { opacity: 1; }
-  100% { opacity: 0; }
+.pack-tagline {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
 }
+.pack-includes {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  margin-bottom: 14px;
+}
+.pack-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.pack-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.pack-features .check {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(0,255,136,0.1);
+  border: 1px solid rgba(0,255,136,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00FF88;
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.btn-pack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-pack-primary {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(155,48,255,0.3);
+}
+.btn-pack-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(155,48,255,0.5); }
+.btn-pack-outline {
+  border: 1px solid rgba(155,48,255,0.3);
+  color: var(--purple-light);
+  background: rgba(155,48,255,0.06);
+}
+.btn-pack-outline:hover { border-color: rgba(155,48,255,0.6); background: rgba(155,48,255,0.12); }
+@media(max-width:900px){ .packs-grid { grid-template-columns: 1fr; } }
 
 .hero-logo-3d img {
   width: 100%;
@@ -1335,7 +1448,7 @@ body {
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo">
-    <svg class="nav-logo-icon" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="nav-logo-icon" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
       <defs>
         <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#1B7CFF"/>
@@ -1344,6 +1457,7 @@ body {
         </linearGradient>
       </defs>
       <path d="M10 70 L30 20 L50 50 L70 20 L90 70 M10 70 L10 30 M90 70 L90 30" stroke="url(#logoGrad)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path class="logo-shimmer-nav" d="M10 70 L30 20 L50 50 L70 20 L90 70 M10 70 L10 30 M90 70 L90 30" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     </svg>
     <span class="nav-logo-text">MOXAL</span>
   </a>
@@ -1352,10 +1466,10 @@ body {
     <li><a href="#solution">Solution</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#methode">Methode</a></li>
-    <li><a href="#resultats">Resultats</a></li>
+    <li><a href="#packs">Nos packs</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="https://wa.me/33736373300?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20entreprise." class="nav-cta" target="_blank">Audit Gratuit</a>
+  <a href="https://wa.me/33768373300?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20entreprise." class="nav-cta" target="_blank">Audit Gratuit</a>
   <button class="burger" id="burger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1370,7 +1484,7 @@ body {
   <a href="#methode" onclick="closeMobileNav()">Methode</a>
   <a href="#resultats" onclick="closeMobileNav()">Resultats</a>
   <a href="#faq" onclick="closeMobileNav()">FAQ</a>
-  <a href="https://wa.me/33736373300?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20entreprise." class="btn-primary" target="_blank" onclick="closeMobileNav()">Audit Gratuit</a>
+  <a href="https://wa.me/33768373300?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20entreprise." class="btn-primary" target="_blank" onclick="closeMobileNav()">Audit Gratuit</a>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -1385,7 +1499,7 @@ body {
     </div>
 
     <div class="hero-logo-3d" id="heroLogo" style="overflow:visible;">
-      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
         <defs>
           <linearGradient id="heroLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#1B7CFF"/>
@@ -1402,39 +1516,8 @@ body {
         </defs>
         <path d="M20 140 L60 30 L100 95 L140 30 L180 140 M20 140 L20 55 M180 140 L180 55"
               stroke="url(#heroLogoGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#glow)"/>
-      </svg>
-
-      <!-- ECG HEARTBEAT OVERLAY -->
-      <svg id="ecg-line" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;height:80px;overflow:visible;pointer-events:none;">
-        <defs>
-          <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#1B7CFF" stop-opacity="0"/>
-            <stop offset="20%" stop-color="#1B7CFF"/>
-            <stop offset="50%" stop-color="#D946EF"/>
-            <stop offset="80%" stop-color="#7B2FFF"/>
-            <stop offset="100%" stop-color="#7B2FFF" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <!-- ECG path: flat → small bump → big spike up → spike down → bounce → flat -->
-        <path id="ecg-path" d="
-          M0,40
-          L60,40
-          L75,35
-          L85,40
-          L95,10
-          L105,62
-          L115,28
-          L125,40
-          L145,40
-          L155,36
-          L165,40
-          L260,40
-          L280,40
-        "/>
-        <circle id="ecg-dot" r="4" cx="0" cy="40">
-          <animateMotion dur="2.2s" repeatCount="indefinite"
-            path="M0,40 L60,40 L75,35 L85,40 L95,10 L105,62 L115,28 L125,40 L145,40 L155,36 L165,40 L260,40 L280,40"/>
-        </circle>
+        <path class="logo-shimmer" d="M20 140 L60 30 L100 95 L140 30 L180 140 M20 140 L20 55 M180 140 L180 55"
+              stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </svg>
     </div>
 
@@ -1445,11 +1528,11 @@ body {
     </h1>
 
     <p class="hero-sub">
-      Moxal Agency construit des automatisations IA et commerciales qui capturent, suivent et convertissent vos prospects 24h/24, 7j/7 — pour que vous ne ratiez plus jamais une opportunite.
+      Moxal Agency construit des systemes d'automatisation commerciale qui capturent, suivent et convertissent vos prospects 24h/24, 7j/7 — pour que vous ne ratiez plus jamais une opportunite.
     </p>
 
     <div class="hero-ctas">
-      <a href="https://wa.me/33736373300?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20entreprise." class="btn-primary" target="_blank">Demander un audit gratuit</a>
+      <a href="https://wa.me/33768373300?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20entreprise." class="btn-primary" target="_blank">Demander un audit gratuit</a>
       <a href="#solution" class="btn-secondary">Decouvrir nos solutions</a>
     </div>
 
@@ -1531,7 +1614,7 @@ body {
     <div class="solution-text reveal">
       <span class="section-label">La solution Moxal</span>
       <h2>Votre systeme commercial<br><span class="gradient-text">ne dort jamais.</span></h2>
-      <p>Nous construisons des automatisations IA sur mesure qui captent chaque prospect, repondent instantanement, relancent intelligemment et organisent votre pipeline — sans intervention humaine.</p>
+      <p>Nous construisons des automatisations sur mesure qui captent chaque prospect, repondent instantanement, relancent intelligemment et organisent votre pipeline — sans intervention humaine.</p>
       <ul class="solution-list">
         <li><span class="check">&#10003;</span> Reponses automatiques en moins de 60 secondes</li>
         <li><span class="check">&#10003;</span> Sequences de relance intelligentes et personnalisees</li>
@@ -1570,8 +1653,8 @@ body {
     </div>
     <div class="service-card reveal">
       <div class="service-icon">&#129302;</div>
-      <h3>Assistants IA</h3>
-      <p>Des assistants IA entraines sur votre activite qui repondent a vos clients, qualifient les demandes et prennent des rendez-vous.</p>
+      <h3>Assistants commerciaux</h3>
+      <p>Des assistants entraines sur votre activite qui repondent a vos clients, qualifient les demandes et prennent des rendez-vous.</p>
     </div>
     <div class="service-card reveal">
       <div class="service-icon">&#128279;</div>
@@ -1702,6 +1785,74 @@ body {
   </div>
 </section>
 
+<!-- ===== PACKS ===== -->
+<section class="section packs" id="packs">
+  <div class="grid-bg"></div>
+  <div class="packs-header reveal">
+    <span class="section-label">Nos packs</span>
+    <h2 class="section-title">Choisissez votre niveau<br>d'automatisation.</h2>
+    <p class="section-subtitle">Chaque pack est installe, configure et operationnel en moins de 72h. Contactez-nous pour decouvrir lequel correspond a votre situation.</p>
+  </div>
+
+  <div class="packs-grid">
+
+    <!-- BASIC -->
+    <div class="pack-card reveal">
+      <div class="pack-name">Pack Basic</div>
+      <div class="pack-tagline">« Ne plus jamais rater un prospect »</div>
+      <ul class="pack-features">
+        <li><span class="check">&#10003;</span> Assistant WhatsApp qui repond et qualifie vos prospects 24h/24</li>
+        <li><span class="check">&#10003;</span> Relances automatiques J+2, J+5, J+10</li>
+        <li><span class="check">&#10003;</span> Rapport hebdomadaire de vos leads par email</li>
+        <li><span class="check">&#10003;</span> Alerte immediate quand un prospect chaud arrive</li>
+        <li><span class="check">&#10003;</span> Support prioritaire + mises a jour incluses</li>
+      </ul>
+      <a href="https://wa.me/33768373300?text=Bonjour%20Moxal%20Agency%2C%20je%20suis%20interesse(e)%20par%20le%20Pack%20Basic.%20Pouvez-vous%20me%20contacter%20?" class="btn-pack btn-pack-outline" target="_blank">
+        Choisir le Pack Basic &rarr;
+      </a>
+    </div>
+
+    <!-- PRO -->
+    <div class="pack-card featured reveal">
+      <div class="pack-badge">&#11088; Le plus populaire</div>
+      <div class="pack-name">Pack Pro</div>
+      <div class="pack-tagline">« De la prise de contact au devis signe »</div>
+      <div class="pack-includes">Tout le Basic, plus :</div>
+      <ul class="pack-features">
+        <li><span class="check">&#10003;</span> Generation automatique de devis PDF + envoi email</li>
+        <li><span class="check">&#10003;</span> Relances devis non signe J+3 et J+7</li>
+        <li><span class="check">&#10003;</span> Rapport hebdomadaire CA + taux de conversion</li>
+        <li><span class="check">&#10003;</span> Alertes WhatsApp en temps reel (signe, expirant)</li>
+        <li><span class="check">&#10003;</span> Demande d'avis Google automatique apres chantier</li>
+        <li><span class="check">&#10003;</span> Fiche chantier envoyee automatiquement a vos ouvriers</li>
+      </ul>
+      <a href="https://wa.me/33768373300?text=Bonjour%20Moxal%20Agency%2C%20je%20suis%20interesse(e)%20par%20le%20Pack%20Pro.%20Pouvez-vous%20me%20contacter%20?" class="btn-pack btn-pack-primary" target="_blank">
+        Choisir le Pack Pro &rarr;
+      </a>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="pack-card reveal">
+      <div class="pack-name">Pack Premium</div>
+      <div class="pack-tagline">« Zero action manuelle »</div>
+      <div class="pack-includes">Tout le Pro, plus :</div>
+      <ul class="pack-features">
+        <li><span class="check">&#10003;</span> Devis par message vocal en 30 secondes</li>
+        <li><span class="check">&#10003;</span> Signature electronique integree (YouSign)</li>
+        <li><span class="check">&#10003;</span> Facturation automatique apres chaque signature</li>
+        <li><span class="check">&#10003;</span> Relances paiement J+7, J+15, J+30</li>
+        <li><span class="check">&#10003;</span> Dashboard dirigeant temps reel (CA, pipeline, conversion)</li>
+        <li><span class="check">&#10003;</span> Agenda Google Calendar synchronise automatiquement</li>
+        <li><span class="check">&#10003;</span> Onboarding sur site + support 7j/7</li>
+      </ul>
+      <a href="https://wa.me/33768373300?text=Bonjour%20Moxal%20Agency%2C%20je%20suis%20interesse(e)%20par%20le%20Pack%20Premium.%20Pouvez-vous%20me%20contacter%20?" class="btn-pack btn-pack-outline" target="_blank">
+        Choisir le Pack Premium &rarr;
+      </a>
+    </div>
+
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
 <section class="section faq" id="faq">
   <div class="faq-header reveal">
@@ -1765,7 +1916,7 @@ body {
     <span class="section-label">Passez a l'action</span>
     <h2 class="section-title">Pret a ne plus jamais<br><span class="gradient-text">rater un prospect ?</span></h2>
     <p>Reservez votre audit gratuit de 30 minutes. Nous analysons votre processus commercial et vous montrons exactement comment l'automatiser — sans engagement.</p>
-    <a href="https://wa.me/33736373300?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20entreprise." class="btn-primary" target="_blank">Reserver mon audit gratuit &rarr;</a>
+    <a href="https://wa.me/33768373300?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20entreprise." class="btn-primary" target="_blank">Reserver mon audit gratuit &rarr;</a>
   </div>
 </section>
 
